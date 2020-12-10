@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_114739) do
+ActiveRecord::Schema.define(version: 2020_12_10_170007) do
 
 # Could not dump table "users" because of following ActiveRecord::StatementInvalid
 #   Mysql2::Error: Unknown table 'check_constraints' in information_schema
