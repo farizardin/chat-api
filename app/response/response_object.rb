@@ -1,19 +1,42 @@
 class ResponseObject
-    def initialize()
-        @code = ""
-        @data = ""
-        @message = ""
+
+    SUCCESS_CODE = "200"
+    ERROR_SERVER_CODE = "500"
+    ERROR_NOT_FOUND_CODE = "404"
+    SUCCESS_MESSAGE = "Data berhasil diambil"
+    ERROR_SERVER_MESSAGE = "Terjadi kesalahan pada server"
+
+    def initialize
+        @code = nil
+        @data = nil
+        @message = nil
     end
 
-    def set_code(code)
-        @code = code
+    def set_success_code
+        @code = SUCCESS_CODE
+    end
+
+    def set_error_server_code
+        @code = ERROR_SERVER_CODE
+    end
+
+    def set_not_found_code
+        @code = ERROR_NOT_FOUND_CODE
     end
 
     def set_data(data)
         @data = data
     end
 
-    def set_messages(message)
+    def set_success_message
+        @message = SUCCESS_MESSAGE
+    end
+
+    def set_error_server_message
+        @message = ERROR_SERVER_MESSAGE
+    end
+
+    def set_custom_message(message)
         @message = message
     end
 
