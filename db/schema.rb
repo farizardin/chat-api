@@ -10,9 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_170007) do
+ActiveRecord::Schema.define(version: 2020_12_11_023056) do
+
+# Could not dump table "conversations" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: Unknown table 'check_constraints' in information_schema
 
 # Could not dump table "users" because of following ActiveRecord::StatementInvalid
 #   Mysql2::Error: Unknown table 'check_constraints' in information_schema
 
+  add_foreign_key "conversations", "users", column: "destination"
+  add_foreign_key "conversations", "users", column: "sender"
 end
