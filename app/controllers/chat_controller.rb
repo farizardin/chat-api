@@ -1,6 +1,8 @@
 require 'response_object'
 require 'json'
 class ChatController < ApplicationController
+    before_action :authorization
+
     def index
         begin
             puts chat_params
@@ -30,7 +32,7 @@ class ChatController < ApplicationController
 
     def send_message
         begin
-            @sender = chat_params[:sender]
+            @sender = @current_user.id
             @destination = chat_params[:destination]
             @message = chat_params[:message]
             
