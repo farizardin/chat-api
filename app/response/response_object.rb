@@ -4,6 +4,8 @@ class ResponseObject
     ERROR_SERVER_CODE = "500"
     ERROR_NOT_FOUND_CODE = "404"
     SUCCESS_MESSAGE = "Data berhasil diambil"
+    SENT_MESSAGE = "Pesan berhasil dikirim"
+    UNSENT_MESSAGE = "Gagal dikirim"
     ERROR_SERVER_MESSAGE = "Terjadi kesalahan pada server"
 
     def initialize
@@ -30,6 +32,14 @@ class ResponseObject
 
     def set_success_message
         @message = SUCCESS_MESSAGE
+    end
+
+    def sent_message
+        @message = SENT_MESSAGE
+    end
+
+    def unsent_message
+        @message = UNSENT_MESSAGE
     end
 
     def set_error_server_message
