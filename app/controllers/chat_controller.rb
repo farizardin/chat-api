@@ -6,7 +6,7 @@ class ChatController < ApplicationController
     def index
         begin
             @participant = @current_user.id
-            @sub_query = Conversation.select("conversations.room_id as id, count(conversations.unread) as unread_notification").where("conversations.destination = ?", @participant).group("room_id").to_sql
+            @sub_query = Conversation.select("conversations.room_id as id, sum(conversations.unread) as unread_notification").where("conversations.destination = ?", @participant).group("room_id").to_sql
             @get_conversation_rooms_data = ConversationRoom.select("conversation_rooms.id, u1.name as participant_one, u2.name as participant_two, c.message as message, unread.unread_notification")
                                         .joins("INNER JOIN users as u1 ON u1.id = conversation_rooms.participant_1")
                                         .joins("INNER JOIN users as u2 ON u2.id = conversation_rooms.participant_2")
@@ -101,13 +101,13 @@ class ChatController < ApplicationController
         begin
             @room_id = chat_params[:id]
             @destination = @current_user.id
-            @read_message = Conversation.where(:sender => @destination).where(:destination => @sender).update_all(:unread => 0)
+            @read_message = Conversation.where(:destination => @destination).where(:room_id => @room_id).update_all(:unread => 0)
             @get_conversations_data = Conversation.select("conversations.message,users.name, conversations.id, conversations.created_at")
                                                         .where('conversations.sender =? or conversations.destination =?', @destination, @destination)
                                                         .where('conversations.room_id =?', @room_id)
                                                         .joins("INNER JOIN users ON users.id = conversations.sender")
             
-            @conversations_data = {:conversations => @get_conversations_data}
+            @conversations_data = {:conversations => @get_conversations_data, :read => @read_message}
             
             response_data = ResponseObject.new
             response_data.set_success_code
