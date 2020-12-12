@@ -19,4 +19,31 @@ Terdapat 2 cara yaitu menggunakan Migration atau mengimport file SQL
 * Ketik `rails s` di cmd/terminal pada directory app
 
 # Fitur Aplikasi
-* Register (Optional Feature)
+1. Register (Optional Feature)
+    Fitur ini memungkinkan pengguna untuk melakukan registrasi.
+    * URI `127.0.0.1:3000/register`
+    * Keys `name`, `username`, `password`, `password_confirmation`, `email`
+    * Method `POST`
+    
+2. Login (Optional Feature)
+    Fitur ini memungkinkan pengguna untuk melakukan login dan mendapatkan `token` untuk authorization
+    * URI `127.0.0.1:3000/register`
+    * Keys `name`, `username`, `password`, `password_confirmation`, `email`
+    * Method `POST`
+    
+3. Authorization (Optional Feature)
+    Fitur ini berguna untuk mengizinkan pengguna mengakses API dengan menggunakan `token` yang didapatkan disaat melakukan login.
+    Tambahkan key `Authorization` pada `Header` dengan value `token` yang didapatkan saat melakukan login.
+    * URIs yang memerlukan `Authorization`
+    1. `127.0.0.1:3000/users` method `GET`
+    2. `127.0.0.1:3000/chat` method `GET`
+    3. `127.0.0.1:3000/chat/send` method `POST`
+    4. `127.0.0.1:3000/chat/open/{id}` method `GET`
+    
+4. Show User List (Optional Feature)
+    Fitur ini berguna untuk mengambil daftar user yang tersedia.
+    Fitur ini membutuhkan `Authorization`
+    
+    * URI `127.0.0.1:3000/register`
+    * Keys `name`, `username`, `password`, `password_confirmation`, `email`
+    * Method `POST`
