@@ -1,5 +1,5 @@
 # README
-
+Aplikasi Chat API ini dibuat menggunakan Ruby on Rails
 # Konfigurasi Dependensi
 1. Pastikan menggunakan Ruby dengan versi 2.6.6
 2. Jalankan perintah `gem install bundler` di cmd/terminal untuk mengupgrade ke versi 2.x.x
@@ -25,13 +25,13 @@ Terdapat 2 cara yaitu menggunakan Migration atau mengimport file SQL
     * Keys `name`, `username`, `password`, `password_confirmation`, `email`
     * Method `POST`
     
-2. Login (Optional Feature)
+2. Login (Optional Feature).
     Fitur ini memungkinkan pengguna untuk melakukan login dan mendapatkan `token` untuk authorization
     * URI `127.0.0.1:3000/register`
     * Keys `name`, `username`, `password`, `password_confirmation`, `email`
     * Method `POST`
     
-3. Authorization (Optional Feature)
+3. Authorization (Optional Feature).
     Fitur ini berguna untuk mengizinkan pengguna mengakses API dengan menggunakan `token` yang didapatkan disaat melakukan login.
     Tambahkan key `Authorization` pada `Header` dengan value `token` yang didapatkan saat melakukan login.
     * URIs yang memerlukan `Authorization`
@@ -40,10 +40,35 @@ Terdapat 2 cara yaitu menggunakan Migration atau mengimport file SQL
     3. `127.0.0.1:3000/chat/send` method `POST`
     4. `127.0.0.1:3000/chat/open/{id}` method `GET`
     
-4. Show User List (Optional Feature)
+4. Show User List (Optional Feature).
     Fitur ini berguna untuk mengambil daftar user yang tersedia.
-    Fitur ini membutuhkan `Authorization`
+    * Fitur ini membutuhkan `Authorization`
     
-    * URI `127.0.0.1:3000/register`
-    * Keys `name`, `username`, `password`, `password_confirmation`, `email`
+    * URI `127.0.0.1:3000/users`
+    * Method `GET`
+    
+5. Send Message to Another User (Soal nomor 1).
+    Fitur ini berguna untuk mengirimkan pesan ke user lain dengan key parameter `destination` dan `message`.
+    * Fitur ini membutuhkan `Authorization`
+    
+    * URI `127.0.0.1:3000/chat/send`
+    * Keys `destination` (user id), `message` (Pesan yang akan dikirim)
     * Method `POST`
+    
+6. Show Conversation Message (Soal nomor 2).
+    Fitur ini berguna untuk mengambil pesan berdasarkan `room id`.
+    * Fitur ini membutuhkan `Authorization`
+    
+    * URI `127.0.0.1:3000/open/{id}`
+    * Method `GET`
+    * (`id` merupakan `room id`, untuk melihat `room id` terdapat pada fitur poin 8)
+    
+7. Reply Conversation (Soal nomor 3).
+    Fitur ini sama dengan fitur `Send Message` (poin 5) dengan melakukan reply ke pengguna yang mengirim pesan sebelumnya dengan key parameter `destination` dan `message`.
+    * Fitur ini membutuhkan `Authorization`
+    
+    * Keys `destination` (user id), `message` (Pesan yang akan dikirim)
+    * URI `127.0.0.1:3000/users`
+    * Method `GET`
+    
+ 8. 
