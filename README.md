@@ -4,7 +4,7 @@ Aplikasi Chat API ini dibuat menggunakan Ruby on Rails
 # Konfigurasi Dependensi
 1. Pastikan menggunakan Ruby dengan versi 2.6.6
 2. Jalankan perintah `gem install bundler` di cmd/terminal untuk mengupgrade ke versi 2.x.x
-3. Jalankan `bundle install` di cmd/terminal pada directory app untuk menginstall dependencies pada Gemfile
+3. Jalankan `bundle install` di cmd/terminal pada directory project untuk menginstall dependencies pada Gemfile
 
 # Database Creation
 Terdapat 2 cara yaitu menggunakan Migration atau mengimport file SQL
@@ -15,11 +15,11 @@ Terdapat 2 cara yaitu menggunakan Migration atau mengimport file SQL
     3. jalankan perintah `rails db:migrate` untuk melakukan migrasi tabel yang telah disiapkan
 
 * Dengan file SQL
-    1. import file `chat-api.sql` yang terletak pada app ke MySQL (file ini menggunakan auto database creation. jika diimport akan auto create database dengan nama `chat-api`)
+    1. import file `chat-api.sql` yang terletak pada root project ke MySQL (file ini menggunakan auto database creation. jika diimport akan auto create database dengan nama `chat-api`)
     2. konfigurasikan database di file `config/database.yml`
     
 # Menjalankan Aplikasi
-* Ketik `rails s` di cmd/terminal pada directory app
+* Ketik `rails s` di cmd/terminal pada directory project
 * rails akan berjalan di `127.0.0.1:3000`
 
 # URI List
