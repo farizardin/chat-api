@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   post "/register", to: "user#create"
   get "/users", to: "user#show"
   post "/login", to: "auth#login"
+  
+  match '*path' => 'errors#error_404', via: :all
 end
