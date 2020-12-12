@@ -14,13 +14,15 @@ class AuthController < ApplicationController
                             :exp => time.strftime("%m-%d-%Y %H:%M"),
                             :username => @user.username
                         }
-            
+                response_data = ResponseObject.new
+                response_data.set_success_code
+                response_data.set_custom_message("Login berhasil")
             else
                 @data = { :error => 'unauthorized' }
-            end
-            response_data = ResponseObject.new
-            response_data.set_success_code
-            response_data.set_custom_message("Login berhasil")
+                response_data = ResponseObject.new
+                response_data.set_not_found_code
+                response_data.set_custom_message("Login gagal")
+            end 
             response_data.set_data(@data)
             render json: response_data
         rescue => error
