@@ -7,7 +7,7 @@ class ChatController < ApplicationController
         begin
             @participant = @current_user.id
             @sub_query = Conversation.select("conversations.room_id as id, sum(conversations.unread) as unread_notification").where("conversations.destination = ?", @participant).group("room_id").to_sql
-            @get_conversation_rooms_data = ConversationRoom.select("conversation_rooms.id, u1.name as participant_one, u2.name as participant_two, c.message as message, unread.unread_notification")
+            @get_conversation_rooms_data = ConversationRoom.select("conversation_rooms.id, u1.name as participant_one, u2.name as participant_two, c.message as message_last, unread.unread_notification")
                                         .joins("INNER JOIN users as u1 ON u1.id = conversation_rooms.participant_1")
                                         .joins("INNER JOIN users as u2 ON u2.id = conversation_rooms.participant_2")
                                         .joins("LEFT JOIN conversations as c on c.id = conversation_rooms.last_message")
