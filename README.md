@@ -21,6 +21,7 @@ Terdapat 2 cara yaitu menggunakan Migration atau mengimport file SQL
 # Menjalankan Aplikasi
 * Ketik `rails s` di cmd/terminal pada directory project
 * rails akan berjalan di `127.0.0.1:3000`
+* Pengujian dapat dilakukan menggunakan aplikasi Postman
 
 # URI List
 1. `127.0.0.1:3000/register`method `POST`
