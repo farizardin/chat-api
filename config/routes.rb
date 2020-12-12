@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   get "/chat/open/:id", to: "chat#open_conversation"
   post "/chat/send", to: "chat#send_message"
   post "/register", to: "user#create"
+  get "/users", to: "user#show"
   post "/login", to: "auth#login"
 end
